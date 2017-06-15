@@ -25,7 +25,6 @@
     "@angular/platform-server": "4.0.0",
     "@angular/tsc-wrapped": "4.0.0",
     "@angular/animations": "4.0.0",
-
     "systemjs": "0.19.47",
     "core-js": "2.4.1",
     "rxjs": "5.2.0",

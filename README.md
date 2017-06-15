@@ -24,3 +24,9 @@ The app uses Entity Framework to create a simple database that stores Docker com
 4. Run `docker-compose up`
 
 1. Navigate to http://localhost:5000 (http://192.168.99.100:5000 if using Docker Toolbox) in your browser to view the site.
+
+
+##myNote
+
+1. Postgres data change is out side the container, using a volumn
+2. start to use logger.logDebug()..

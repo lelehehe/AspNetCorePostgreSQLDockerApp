@@ -6,6 +6,8 @@ project.json.old
 #remove generated files
 **/wwwroot/app/**/*.js
 **/wwwroot/app/**/*.map
+**/postgres-data
+
 
 #remove node_modules copied into wwwroot
 **/wwwroot/lib

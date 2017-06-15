@@ -18,10 +18,12 @@ namespace AspNetCorePostgreSQLDockerApp.Repository
         public CustomersRepository(CustomersDbContext context, ILoggerFactory loggerFactory) {
           _context = context;
           _logger = loggerFactory.CreateLogger("CustomersRepository");
+
         }
 
         public async Task<List<Customer>> GetCustomersAsync()
         {
+          _logger.LogDebug("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
             return await _context.Customers.OrderBy(c => c.LastName).ToListAsync();
         }
 
