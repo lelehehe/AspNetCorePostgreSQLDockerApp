@@ -34,12 +34,17 @@ namespace AspNetCorePostgreSQLDockerApp
         {
 
             //Add PostgreSQL support
+            // services.AddEntityFrameworkNpgsql()
+            //     .AddDbContext<DockerCommandsDbContext>(options =>
+            //         options.UseNpgsql(Configuration["Data:DbContext:DockerCommandsConnectionString"]))
+            //     .AddDbContext<CustomersDbContext>(options =>
+            //         options.UseNpgsql(Configuration["Data:DbContext:CustomersConnectionString"]));
+
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<DockerCommandsDbContext>(options =>
-                    options.UseNpgsql(Configuration["Data:DbContext:DockerCommandsConnectionString"]))
+                    options.UseNpgsql(Configuration["Data:DbContext:DockerCommandsConnectionString-local"]))
                 .AddDbContext<CustomersDbContext>(options =>
-                    options.UseNpgsql(Configuration["Data:DbContext:CustomersConnectionString"]));
-
+                    options.UseNpgsql(Configuration["Data:DbContext:CustomersConnectionString-local"]));
 
             services.AddMvc();
 
