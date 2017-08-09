@@ -26,7 +26,6 @@ namespace AspNetCorePostgreSQLDockerApp
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
-
         public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -34,17 +33,18 @@ namespace AspNetCorePostgreSQLDockerApp
         {
 
             //Add PostgreSQL support
-            // services.AddEntityFrameworkNpgsql()
-            //     .AddDbContext<DockerCommandsDbContext>(options =>
-            //         options.UseNpgsql(Configuration["Data:DbContext:DockerCommandsConnectionString"]))
-            //     .AddDbContext<CustomersDbContext>(options =>
-            //         options.UseNpgsql(Configuration["Data:DbContext:CustomersConnectionString"]));
-
+#if DEBUG
+            var dockerConnection = "Data:DbContext:DockerCommandsConnectionString-local";
+            var customerConnection = "Data:DbContext:CustomersConnectionString-local";
+#else 
+            var dockerConnection = "Data:DbContext:DockerCommandsConnectionString";
+            var customerConnection = "Data:DbContext:CustomersConnectionString";
+#endif             
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<DockerCommandsDbContext>(options =>
-                    options.UseNpgsql(Configuration["Data:DbContext:DockerCommandsConnectionString-local"]))
+                    options.UseNpgsql(Configuration[dockerConnection]))
                 .AddDbContext<CustomersDbContext>(options =>
-                    options.UseNpgsql(Configuration["Data:DbContext:CustomersConnectionString-local"]));
+                    options.UseNpgsql(Configuration[customerConnection]));
 
             services.AddMvc();
 

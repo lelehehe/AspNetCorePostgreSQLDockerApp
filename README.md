@@ -30,3 +30,18 @@ The app uses Entity Framework to create a simple database that stores Docker com
 
 1. Postgres data change is out side the container, using a volumn
 2. start to use logger.logDebug()..
+
+## build
+docker build . -f aspnetcore.production.dockerfile -t lelehehe/dotnet:1.0.0
+
+docker run -d --name my-postgres -e POSTGRES_PASSWORD=password postgres
+docker run -d -p 5000:5000 --link my-postgres:postgres lelehehe/dotnet:1.0.0
+after 10 seconds, go to 
+http://localhost:5000
+
+mymac:AspNetCorePostgreSQLDockerApp mike$ dotnet restore
+after that, ctrl+shift+b would build the project succeeded
+to debug in local mode, need to change connection strings in file: 
+/Users/mike/Documents/GitHub/AspNetCorePostgreSQLDockerApp/src/AspNetCorePostgreSQLDockerApp/Program.cs
+
+
